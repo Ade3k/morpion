@@ -21,15 +21,17 @@ jobs:
       run: cd front && npm install
 
     - name: Build Angular App
-      run: cd front && npm run build -- --base-href=/morpion/
+      run: cd front && npm run build -- --base-href=/morpion-adam/
     - name: List dist content (for debugging path - should show 'browser' inside morpion-adam)
-      run: ls -al front/dist/
+      run: |
+        ls -al front/dist/
+        ls -al front/dist/morpion-adam
 
     - name: Deploy to gh pages
       run: |
         git config --global user.email "adamsosseni@gmail.com"
         git config --global user.name "adams"
-        cd front && npx angular-cli-ghpages --dir=dist/morpion/browser --no-silent
+        cd front && npx angular-cli-ghpages --dir=dist/morpion-adam/browser --no-silent
       env:
         CI: true
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
