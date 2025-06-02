@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 app.set("socketio", io);
 
 // Connexion MongoDB
-const mongoDB = `mongodb+srv://${process.env.PWD_USER}:${process.env.PWD_BD}@cluster0.mso3mb9.mongodb.net/${process.env.NAME_BD}?retryWrites=true&w=majority`;
+const mongoDB = `mongodb+srv://${process.env.PWD_USER}:${process.env.PWD_BD}@cluster0.katm4if.mongodb.net/${process.env.NAME_BD}?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error"));
