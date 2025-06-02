@@ -175,6 +175,7 @@ async function getUserById(id) {
 }
 
 // Lancer le serveur
-server.listen(port, () => {
+/*server.listen(port, () => {
   console.log(`Application exemple à l'écoute sur le port ${port}!`);
-});
+});*/
+module.exports = server;
