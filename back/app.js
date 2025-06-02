@@ -8,28 +8,42 @@ const cors = require("cors");
 const http = require("http");
 const socketIo = require("socket.io");
 const bodyParser = require("body-parser");
+const routeUser = require("./routes/user");
 const User = require('./models/user');
 
-const routeStudent = require("./routes/student");
-const routeUser = require("./routes/user");
-const routeMessage = require("./routes/message");
-const gameRoutes = require('./routes/game');
-
-const Game = require("./models/Game");
+const allowedOrigins = [
+    'https://loise.github.io/morpion-adam/', // L'URL de votre GitHub Pages
+    'http://localhost:4200'
+];
 
 // Serveur + WebSocket
 const server = http.createServer(app);
 const io = socketIo(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
+  addTrailingSlash: false,
+  cors: { // <--- Configuration CORS spécifique à Socket.IO
+    origin: allowedOrigins, // Utilisez la même liste d'origines autorisées que pour Express
+    methods: ["GET", "POST"], // Les méthodes autorisées pour le handshake Socket.IO (GET, POST sont les plus courantes)
+    //credentials: true // Important si vous utilisez des cookies ou des sessions pour l'auth
+  }
 });
 
 // Middleware
 dotenv.config();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: function (origin, callback) {
+    // Permettre les requêtes sans 'origin' (ex: Postman, requêtes du même domaine)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Méthodes HTTP que vous autorisez
+  allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes que vous autorisez
+  credentials: true // Si vous utilisez des cookies ou des sessions entre frontend et backend
+}));
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -40,7 +54,7 @@ app.use((req, res, next) => {
 app.set("socketio", io);
 
 // Connexion MongoDB
-const mongoDB = `mongodb+srv://${process.env.PWD_USER}:${process.env.PWD_BD}@cluster0.mso3mb9.mongodb.net/cesi?retryWrites=true&w=majority`;
+const mongoDB = `mongodb+srv://${process.env.PWD_USER}:${process.env.PWD_BD}@cluster0.mso3mb9.mongodb.net/${process.env.NAME_BD}?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error"));
@@ -49,10 +63,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error"));
 app.get("/", (req, res) => {
   res.send(`Hello World! ---- request time ${req.requestTime}`);
 });
-app.use("/student/", routeStudent);
 app.use("/user/", routeUser);
-app.use("/message/", routeMessage);
-app.use('/api', gameRoutes);
 
 // WebSocket logique
 const usersInRooms = {}; // { roomId: [user1, user2] }
@@ -73,7 +84,7 @@ io.on("connection", (socket) => {
 
       socket.join(roomId);
 
-      /*if (!usersInRooms[roomId]) {
+      if (!usersInRooms[roomId]) {
         usersInRooms[roomId] = [];
       }
 
@@ -87,7 +98,7 @@ io.on("connection", (socket) => {
       // Quand deux joueurs sont présents dans la room, on les envoie aux clients
       if (usersInRooms[roomId].length === 2) {
         io.to(roomId).emit("playersInfo", usersInRooms[roomId]);
-      }*/
+      }
     } catch (error) {
       console.error("Erreur dans joinRoom:", error);
     }
@@ -134,21 +145,23 @@ io.on("connection", (socket) => {
   });
 
   // Enregistrement de la partie quand elle est terminée
-  socket.on("gameFinished", async ({ roomId, winner, duration }) => {
+  socket.on("gameFinished", async ({ roomId, winner, duration, userId }) => {
     try {
       const users = usersInRooms[roomId];
       if (!users || users.length === 0) return;
 
-      const gameData = {
+      /*const gameData = {
         roomId,
         players: users.map((u) => u._id),
         winner,
         duration,
         playedAt: new Date(),
-      };
+      };*/
 
-      await Game.create(gameData);
-      console.log(`✅ Partie enregistrée : ${roomId} | Gagnant : ${winner}`);
+      //await Game.create(gameData);
+
+      socket.broadcast.emit("gameFinished", { roomId, winner, duration, userId });
+      console.log(`✅ Partie enregistrée : ${roomId} | Gagnant : ${winner} ${userId}`);
     } catch (err) {
       console.error("❌ Erreur lors de l’enregistrement de la partie :", err);
     }
