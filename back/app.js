@@ -12,7 +12,7 @@ const routeUser = require("./routes/user");
 const User = require('./models/user');
 
 const allowedOrigins = [
-    'https://ade3k.github.io/morpion/', // L'URL de votre GitHub Pages
+    'https://ade3k.github.io', // L'URL de votre GitHub Pages
     'http://localhost:4200'
 ];
 
