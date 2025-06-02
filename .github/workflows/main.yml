@@ -23,7 +23,7 @@ jobs:
     - name: Build Angular App
       run: cd front && npm run build -- --base-href=/morpion/
     - name: List dist content (for debugging path - should show 'browser' inside morpion-adam)
-      run: ls -al front/dist/morpion
+      run: ls -al front/dist/
 
     - name: Deploy to gh pages
       run: |
