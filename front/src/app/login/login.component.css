@@ -1,5 +1,156 @@
-.selected {
-    border-color: #007bff;
-    box-shadow: 0 0 5px #007bff;
+/* Conteneur général */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e5e5;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  color: #222;
+  padding: 2rem;
+}
+
+/* Conteneur principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+@media(min-width: 768px) {
+  .container {
+    flex-direction: row;
   }
-  
+}
+
+/* Partie gauche */
+.left-side {
+  background-color: #003366;
+  color: white;
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-side h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.left-side p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Partie droite */
+.right-side {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.right-side h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #003366;
+  text-align: center;
+}
+
+/* Formulaire */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 90%;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #003366;
+  outline: none;
+}
+
+/* Messages d'erreur */
+.error-msg {
+  color: #c62828;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Message erreur globale */
+.error-alert {
+  background: #ffe6e6;
+  border-left: 4px solid #c62828;
+  padding: 0.75rem 1rem;
+  border-radius: 0.4rem;
+  color: #c62828;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+/* Bouton */
+.btn-submit {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: white;
+  background-color: #0055a5;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #003f7f;
+}
+
+/* Spinner svg */
+.spinner {
+  height: 1.25rem;
+  width: 1.25rem;
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  fill: white;
+}
+
+.loading-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

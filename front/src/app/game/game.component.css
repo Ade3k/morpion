@@ -1,27 +1,230 @@
+/* Conteneur principal */
+.game-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-family: "Marianne", "Segoe UI", Arial, sans-serif;
+  color: #222222;
+  box-shadow: 0 0 15px rgba(0, 33, 71, 0.1);
+}
+
+/* Titres */
+.game-container h2,
+.game-container h3,
+.game-container h4 {
+  color: #002147; /* bleu officiel */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: "Marianne", "Segoe UI", Arial, sans-serif;
+}
+
+.game-container h2 {
+  border-bottom: 2px solid #0055a4;
+  padding-bottom: 0.3rem;
+}
+
+/* Joueurs en face à face */
+.players-side {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.player-info {
+  width: 45%;
+  background-color: #e9f0fb;
+  border: 1px solid #aaccee;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.player-info.left {
+  border-right: 2px solid #0055a4;
+}
+
+.player-info.right {
+  border-left: 2px solid #0055a4;
+}
+
+.player-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #0055a4;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #002147;
+  margin-bottom: 0.3rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #555555;
+}
+
+/* Durée de la partie */
+.game-container h4 {
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+/* Messages de tour */
+.game-container h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Plateau de jeu */
 .board {
-    display: grid;
-    grid-template-rows: repeat(3, 100px);
-    grid-template-columns: repeat(3, 100px);
-    gap: 5px;
-    margin-top: 20px;
-  }
-  
-  .row {
-    display: contents;
-  }
-  
-  .cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f4eded;
-    border: 1px solid #c999c9cc;
-    font-size: 2em;
-    cursor: pointer;
-  }
-  
-  .selected {
-    border-color: #007bff;
-    box-shadow: 0 0 5px #007bff;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  user-select: none;
+}
+
+.row {
+  display: contents; /* pour le grid */
+}
+
+.cell {
+  background-color: #f0f4fb;
+  border: 2px solid #aaccee;
+  border-radius: 0.4rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #002147;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cell:hover {
+  background-color: #d0defc;
+}
+
+/* Fin de partie - statut */
+.status {
+  background-color: #e6f0ff;
+  border: 1px solid #aaccee;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #003366;
+  text-align: center;
+}
+
+.status p {
+  margin: 0.5rem 0;
+}
+
+.status button {
+  background-color: #0055a4;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.status button:hover {
+  background-color: #003f7f;
+}
+
+/* Bouton toggle boxscore */
+.btn-toggle-boxscore {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-toggle-boxscore:hover {
+  background-color: #002147;
+}
+
+/* Tableau des scores */
+.scores table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.scores th,
+.scores td {
+  border: 1px solid #aaccee;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  color: #002147;
+  font-weight: 600;
+}
+
+.scores th {
+  background-color: #d6e4f7;
+}
+
+/* Sections meilleurs utilisateurs et participants */
+.best-users, .participants {
+  background-color: #e9f0fb;
+  border: 1px solid #aaccee;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.best-users h3,
+.participants h3 {
+  color: #002147;
+  margin-bottom: 0.8rem;
+}
+
+/* Liste meilleurs utilisateurs */
+.best-users ul,
+.participants ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.best-users li,
+.participants li {
+  font-weight: 600;
+  padding: 0.3rem 0;
+  color: #003366;
+}
+
+/* Participants avec avatar */
+.participants li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.avatar-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #0055a4;
+  object-fit: cover;
+}

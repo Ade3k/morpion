@@ -1,59 +1,53 @@
-# MorpionAdam
+# Élection 2027 — Le Jeu
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+Bienvenue dans **Élection 2027**, un jeu en ligne multijoueur où vous incarnez un(e) candidat(e) à la présidentielle. 
 
-## Development server
+---
 
-To start a local development server, run:
+# Objectif du projet
+
+Deux joueurs s'affrontent dans une partie de type Morpion :
+
+- Choix d’un avatar de candidat
+- Débat en ligne dans un "salon"
+- Résultat de la partie (victoire, match nul…)
+- Tableau des scores avec meilleurs candidats et statistiques
+
+---
+
+## Technologies utilisées
+
+- **Frontend** : Angular (avec Forms, animations, composants dynamiques)
+- **Backend** : Node.js + Express
+- **WebSocket** : Socket.IO pour la communication en temps réel
+- **Base de données** : MongoDB (Mongoose)
+- **Styles** : CSS
+---
+
+# Lancer le projet en local
+
+### Pré-requis
+
+- Node.js
+- Angular CLI
+- MongoDB en local ou en ligne
+
+### Installation
 
 ```bash
+# Cloner le repo
+git clone https://github.com/votre-utilisateur/election-2027.git
+cd election-2027
+
+# Installer les dépendances backend
+cd server
+npm install
+
+# Démarrer le serveur
+node app.js
+
+# Installer les dépendances frontend
+npm install
+
+# Démarrer le frontend Angular
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

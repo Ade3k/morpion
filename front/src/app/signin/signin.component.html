@@ -1,112 +1,70 @@
-<div>
-  <h2>Signin</h2>
-  <form (ngSubmit)="onSubmit()">
-    <!--<h3>Choisis ton avatar :</h3>
-    <div class="avatars">
-      <img
-        *ngFor="let avatar of avatarList"
-        [src]="avatar"
-        [class.selected]="avatar === selectedAvatar"
-        (click)="selectAvatar(avatar)"
-        width="100"
-        height="100"
-        style="
-          cursor: pointer;
-          margin: 10px;
-          border-radius: 50%;
-          border: 2px solid transparent;
-        "
-      />
-    </div>--><div>
-      <h2>Signin</h2>
-      <form (ngSubmit)="onSubmit()">
-        <h3>Choisis ton avatar :</h3>
-        <div class="avatars">
-          <img
-            *ngFor="let avatar of avatarList"
-            [src]="avatar"
-            [class.selected]="avatar === selectedAvatar"
-            (click)="selectAvatar(avatar)"
-            width="100"
-            height="100"
-            style="
-              cursor: pointer;
-              margin: 10px;
-              border-radius: 50%;
-              border: 2px solid transparent;
-            "
+<div class="container-formulaire">
+  <section class="formulaire-inscription">
+    <header class="header-formulaire">
+      <h2>Inscription citoyenne</h2>
+      <p>Merci de renseigner vos informations pour créer votre profil républicain.</p>
+    </header>
+
+    <form (ngSubmit)="onSubmit()" class="formulaire">
+      <h3>Séléctionnez un candidat :</h3>
+      <div class="avatars">
+        <img
+          *ngFor="let avatar of avatarList"
+          [src]="avatar"
+          [class.selected]="avatar === selectedAvatar"
+          (click)="selectAvatar(avatar)"
+          width="80"
+          height="80"
+          style="
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+          "
+        />
+      </div>
+
+        <div class="form-group">
+          <label for="username">Pseudo :</label>
+          <input
+            type="text"
+            id="username"
+            [(ngModel)]="username"
+            name="username"
+            required
           />
         </div>
-    
-        <label for="username">Pseudo:</label>
-        <input
-          type="text"
-          id="username"
-          [(ngModel)]="username"
-          name="username"
-          required
-        />
-    
-        <label for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          [(ngModel)]="email"
-          name="email"
-          required
-        />
-    
-        <label for="password">Mot de passe:</label>
-        <input
-          type="password"
-          id="password"
-          [(ngModel)]="password"
-          name="password"
-          required
-        />
-    
-        <button type="submit">S’inscrire</button>
-      </form>
-    
-      <!-- Bouton pour rediriger vers la page de connexion -->
-      <!--<button (click)="navigateToLogin()" class="btn btn-primary btn-warning">
-        Vous avez déjà un compte ?
-      </button>-->
-    </div>
 
-    <!--
-    <label for="username">Pseudo:</label>
-    <input
-      type="text"
-      id="username"
-      [(ngModel)]="username"
-      name="username"
-      required
-    />
+        <div class="form-group">
+          <label for="email">Email :</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            required
+          />
+        </div>
 
-    <label for="email">Email:</label>
-    <input
-      type="email"
-      id="email"
-      [(ngModel)]="email"
-      name="email"
-      required
-    />
+        <div class="form-group">
+          <label for="password">Mot de passe :</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </div>
 
-    <label for="password">Mot de passe:</label>
-    <input
-      type="password"
-      id="password"
-      [(ngModel)]="password"
-      name="password"
-      required
-    />
+      <div class="form-actions">
+        <button type="submit" class="btn-valider">Cliquez pour espérer votre investiture</button>
+      </div>
+    </form>
 
-    <button type="submit">S’inscrire</button>-->
-  </form>
-
-  <!-- Bouton pour rediriger vers la page de connexion -->
-  <!--<button (click)="navigateToLogin()" class="btn btn-primary btn-warning">
-    Vous avez déjà un compte ?
-  </button>-->
+    <!-- Bouton pour rediriger vers la page de connexion -->
+    <!--<button (click)="navigateToLogin()" class="btn btn-primary btn-warning">
+      Vous avez déjà un compte ?
+    </button>-->
+  </section>
 </div>
