@@ -174,8 +174,9 @@ async function getUserById(id) {
   return await db.collection("users").findOne({ _id: new ObjectId(id) });
 }
 
-// Lancer le serveur
-/*server.listen(port, () => {
+// Lancer le serveur en local
+server.listen(port, () => {
   console.log(`Application exemple à l'écoute sur le port ${port}!`);
-});*/
-module.exports = server;
+});
+// Lancer le serveur sur vercel (not working)
+//module.exports = server;
