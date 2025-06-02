@@ -1,21 +1,21 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "back/src/app.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["back/dist/**"] }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "back/src/app.js"
-    }
-  ],
-  "git": {
+ "version": 2,
+ "builds": [
+  {
+   "src": "app.js",
+   "use": "@vercel/node",
+   "config": { "includeFiles": ["dist/**"] }
+  }
+ ],
+ "routes": [
+  {
+   "src": "/(.*)",
+   "dest": "app.js"
+  }
+ ],
+ "git": {
     "deploymentEnabled": {
-      "main": true
+      "main": false
     }
   }
 }
