@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-      "morpion-adam": {
+      "morpion": {
         "projectType": "application",
         "schematics": {},
         "root": "",
@@ -13,7 +13,7 @@
           "build": {
             "builder": "@angular-devkit/build-angular:application",
             "options": {
-              "outputPath": "dist/morpion-adam",
+              "outputPath": "dist/morpion",
               "index": "src/index.html",
               "browser": "src/main.ts",
               "polyfills": [
@@ -61,10 +61,10 @@
             "builder": "@angular-devkit/build-angular:dev-server",
             "configurations": {
               "production": {
-                "buildTarget": "morpion-adam:build:production"
+                "buildTarget": "morpion:build:production"
               },
               "development": {
-                "buildTarget": "morpion-adam:build:development"
+                "buildTarget": "morpion:build:development"
               }
             },
             "defaultConfiguration": "development"
