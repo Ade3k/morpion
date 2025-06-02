@@ -11,6 +11,10 @@
   {
    "src": "/(.*)",
    "dest": "app.js"
-  }
+  },
+    {
+      "src": "/socket.io/(.*)", // Route pour Socket.IO, très important !
+      "dest": "app.js"
+    }
  ]
 }
