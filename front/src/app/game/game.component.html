@@ -1,5 +1,5 @@
 <div class="game-container">
-  <h2>Election 2027 : Salon {{ roomId }}</h2>
+  <h2>Election 2027 - Le Jeu : Salon {{ roomId }}</h2>
 
   <!-- Joueurs positionnés en face à face -->
   <div class="players-side">
@@ -37,7 +37,7 @@
   <div *ngIf="gameOver" class="status">
     <p *ngIf="winner === 'draw'">Match nul ! Vos programmes ne convainquent pas les Français.</p>
     <p *ngIf="winner && winner !== 'draw'">🏆 Le joueur {{ winner }} a remporté l'éléction !</p>
-    <button (click)="onClickRejouer()">Faire un nouveau scrutin</button>
+    <button (click)="onClickRejouer()">Un nouveau scrutin ?</button>
   </div>
 
   <!-- Bouton afficher les scores -->
@@ -93,5 +93,6 @@
         </li>
       </ul>
     </section>
-  </div>
+  </div><hr>
+  <p class="catchphrase">L'avenir des français se joue sur cette partie de morpion.</p>
 </div>

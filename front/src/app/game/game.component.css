@@ -43,18 +43,18 @@
 }
 
 .player-info.left {
-  border-right: 2px solid #0055a4;
+  border-right: 2px solid #b11c09;
 }
 
 .player-info.right {
-  border-left: 2px solid #0055a4;
+  border-left: 2px solid #b11c09;
 }
 
 .player-info img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid #0055a4;
+  border: 2px solid #b11c09;
   margin-bottom: 0.5rem;
   object-fit: cover;
 }
@@ -114,6 +114,7 @@
 
 .cell:hover {
   background-color: #d0defc;
+  border: 1px solid #b11c09;
 }
 
 /* Fin de partie - statut */
@@ -227,4 +228,11 @@
   border-radius: 50%;
   border: 1.5px solid #0055a4;
   object-fit: cover;
+}
+
+.catchphrase {
+  font-style: italic;
+  color: #555555;
+  margin-top: 0.5rem;
+  text-align: center;
 }

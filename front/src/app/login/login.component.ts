@@ -78,8 +78,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  /*navigateToSignin() {
+  navigateToSignin() {
     this.router.navigate(['/signin']);
-  }*/
+  }
 
 }

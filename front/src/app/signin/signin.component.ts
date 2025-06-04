@@ -58,7 +58,7 @@ export class SigninComponent {
     console.log("Avatar sélectionné :", avatar);
   }
 
-  /*navigateToLogin() {
+  navigateToLogin() {
     this.router.navigate(['/login']);
-  }*/
+  }
 }
