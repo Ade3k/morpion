@@ -51,6 +51,11 @@ npm install
 # Démarrer le frontend Angular
 ng serve
 
+# Merci pour votre visite
+Merci d’avoir pris le temps de découvrir ce projet.
+Élection 2027 est un exercice complet mêlant frontend, backend, temps réel et base de données — un excellent terrain de jeu pour progresser en développement web.
+Si vous souhaitez en discuter, proposer une amélioration ou simplement échanger autour du projet, vous êtes le bienvenu.
+
 # À savoir
 Lien de l'api : https://morpion-neon.vercel.app/ 
 Important : les WebSockets fonctionnent en local sans restriction, mais plus difficilement e prroduction
